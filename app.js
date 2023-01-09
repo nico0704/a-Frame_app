@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "dXa_sql()->root0704",
-    database: "a-frame_app_database",
+    password: "",
+    database: "",
 });
 
 
