@@ -15,27 +15,40 @@ app.use(bodyParser.json());
 
 // create connection
 // bitte hier user, password und ggf. database eintragen
-/*const db = mysql.createConnection({
+const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
-    database: "",
+    password: "dXa_sql()->root0704",
+    database: "a-frame_app_database",
 });
-*/
+
 
 // connect
-/*db.connect((error) => {
+db.connect((error) => {
     if (error) {
         throw error;
     }
     console.log("MySql connected");
 });
-*/
 
 // home
 app.get("/", async (req, res) => {
     let html = await readFile("./index.html", "utf-8");
     res.send(html);
+});
+
+// get scores
+app.get("/getScore", async (req, res) => {
+    let sql = "SELECT * FROM score";
+    let query = db.query(sql, (err, results) => {
+        if (err) {
+            res.status(500).send("Something went wrong");
+            throw err;
+        } else {
+            console.log(results.length + " entries found in database");
+            res.status(200).send(results);
+        }
+    });
 });
 
 

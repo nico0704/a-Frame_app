@@ -16,5 +16,23 @@
         <a-sky color="#ECECEC"></a-sky>
     </a-scene>
 </body>
+<script>
+    window.addEventListener("load", getScore);
+    function getScore() {
+        console.log("getting data from database...");
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "/getScore", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            if (this.status == 200) {
+                let response = JSON.parse(xhr.response);
+                console.log(response);
+            } else {
+                console.log("could not get data from database!");
+            }
+        }
+        xhr.send();
+    }
+</script>
 
 </html>
