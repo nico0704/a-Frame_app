@@ -149,7 +149,7 @@
     }
 
     function setCars() {
-        const colors = ["#253aa7", "#752b19", "#df5891", "#221b19", "#d6e7f1", "#cf1f21", "#333a3c"];
+        const colors = ["#253aa7", "#752b19", "#df5891", "#221b19", "#d6e7f1", "#cf1f21", "#333a3c", "#1c1d21"];
         for (let i = 0; i < cars.length; i++) {
             if (cars[i].getAttribute("position").z > 70) {
                 //console.log(cars[i].getAttribute("position"))
@@ -163,7 +163,7 @@
                     easing: "linear",
                     loop: true,
                 });
-                car.childNodes[3].setAttribute("material", { color: colors[randomIntFromInterval(0, 6)] });
+                car.childNodes[3].setAttribute("material", { color: colors[randomIntFromInterval(0, 7)] });
             }
         }
         setTimeout(() => {
