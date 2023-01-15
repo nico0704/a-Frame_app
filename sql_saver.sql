@@ -7,6 +7,8 @@ CREATE TABLE score (
     PRIMARY KEY (ID)
 );
 
-INSERT INTO score VALUES (1, "Nico", "Schröder", "nicopico", 24);
-INSERT INTO score VALUES (2, "Donald", "Duck", "duckforce", 50);
-INSERT INTO score VALUES (3, "Mickey", "Mouse", "MickYMousEX", 80);
+INSERT INTO score VALUES (1, "Nico", "Schroeder", "nicooopicoooo", 24);
+INSERT INTO score VALUES (2, "Donald", "Duck", "duckforcewuhu", 50);
+INSERT INTO score VALUES (3, "Mickey", "Mouse", "MickMous", 80);
+INSERT INTO score VALUES (4, "Daisy", "Duck", "daisyyydays_", 70);
+INSERT INTO score VALUES (5, "Dagobert", "Duck", "scroogemcduck", 42);

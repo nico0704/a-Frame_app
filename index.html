@@ -96,9 +96,17 @@
                 radius="0.11"></a-sphere>
         </a-entity>
         <a-plane position="0 0 -58" rotation="0 0 0" width="16" height="20" color="black" metalness="1"></a-plane>
-        <a-text id="test"
-            animation="property: object3D.position.z; to: -80; delay: 200; dur: 52000; easing: linear; loop: true"
-            value="" position="20 20 -80" color="pink" , scale="10 10 10"></a-text>
+        <!--Scoreboard-->
+        <a-entity>
+            <!--<a-plane position="0 20 -40.1" rotation="25 0 0" color="#6a747c" width="30" height="13"></a-plane>-->
+            <a-text id="scoreboard" value="" position="25 20 -50" rotation="30 -40 0" scale="1.2 1.2 1.2" color="white"
+                font="mozillavr" width="22.5" height="25"></a-text>
+        </a-entity>
+        <!--Title-->
+        <a-entity>
+            <a-text value="VRace" position="-9 2.5 -50" rotation="0 0 0" scale="5 5 5" color="#d61313" font="roboto"
+                width="25" height="25" letterSpacing="10"></a-text>
+        </a-entity>
     </a-scene>
 </body>
 <script>
@@ -117,13 +125,22 @@
         xhr.onload = function () {
             if (this.status == 200) {
                 let response = JSON.parse(xhr.response);
-                console.log(response);
+                //console.log(response);
+                let score_arr = [];
                 let result = "";
                 response.forEach(element => {
-                    result += element.ID + " - " + element.firstname + " - " + element.gamertag + "\n";
+                    score_arr.push(element);
                 });
-                console.log(result);
-                document.getElementById("test").setAttribute('value', result);
+                // sort array by score (descending)...
+                score_arr.sort((a, b) => b.score - a.score);
+                console.log(score_arr);
+                let pos = 1;
+                score_arr.forEach(element => {
+                    result += pos + ". " + element.firstname + " " + element.lastname + " - " + element.gamertag + " : " + element.score + "\n";
+                    pos++;
+                })
+                document.getElementById("scoreboard").setAttribute("value", result);
+                document.getElementById("scoreboard").setAttribute("text", { lineHeight: "150", letterSpacing: "7.5" });
             } else {
                 console.log("could not get data from database!");
             }
@@ -184,8 +201,8 @@
             let road_marking = document.createElement("a-plane");
             road_marking.setAttribute("position", { x: 0, y: 0.01, z: (-55 + 10 * i) });
             road_marking.setAttribute("rotation", { x: -90, y: 0, z: 0 });
-            road_marking.setAttribute("material", { color: "#6a747c" });
-            road_marking.setAttribute("geometry", {height: "5", width: "1"});
+            road_marking.setAttribute("material", { color: "#b3afaf" });
+            road_marking.setAttribute("geometry", { height: "5", width: "1" });
             trackLimits.appendChild(road_marking);
         }
     }
