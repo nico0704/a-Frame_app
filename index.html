@@ -8,12 +8,34 @@
 </head>
 
 <body>
-    <a-scene>
-        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-        <a-sky color="#ECECEC"></a-sky>
+    <a-scene background="color: black">
+        <a-entity light="intensity: 0.7; castShadow: true" position="-0.5 1 1" data-aframe-default-light=""
+            aframe-injected=""></a-entity>
+        <a-plane position="0 0 -2" rotation="-90 0 0" width="15" height="120" color="#6a747c"></a-plane>
+        <!--<a-box animation="property: object3D.position.z; to: 120; delay: 200; dur: 5200; easing: linear; loop: true"
+            position="0 2 -80" color="orange" opacity="1" width="2" depth="5" height="3" material=""
+            geometry=""></a-box>-->
+
+        <!--Car to 70-->
+        <a-entity scale="1.43 1 0.75" animation="property: object3D.position.z; to:0; delay: 200; dur: 5200; easing: linear; loop: true">
+            <!--Body-->
+            <a-cylinder position="1 1.05 -10" rotation="90 -90 0" scale="2.0 0.6 0.6" radius="2" segments-radial="10"
+                color="#253aa7"></a-cylinder>
+            <!--Windshield-->
+            <a-plane position="0.997 1.65 -6.735" scale="0.6 1.13 1" rotation="-67.5 0 0" color="#6a747c" height="1"
+                width="1" metalness="0.7"></a-plane>
+            <!--Tires-->
+            <a-sphere position="0.7 0.25 -6.95" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -6.95" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="0.7 0.25 -13.2" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -13.2" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
+            <!--Lights-->
+            <a-sphere position="0.794 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49" radius="0.11"></a-sphere>
+            <a-sphere position="1.2 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49" radius="0.11"></a-sphere>
+        </a-entity>
+        <a-text id="test"
+            animation="property: object3D.position.z; to: 120; delay: 200; dur: 52000; easing: linear; loop: true"
+            value="" position="20 16 -80" color="pink" , scale="10 10 10"></a-text>
     </a-scene>
 </body>
 <script>
@@ -27,12 +49,22 @@
             if (this.status == 200) {
                 let response = JSON.parse(xhr.response);
                 console.log(response);
+                let result = "";
+                response.forEach(element => {
+                    result += element.ID + " - " + element.firstname + " - " + element.gamertag + "\n";
+                });
+                console.log(result);
+                document.getElementById("test").setAttribute('value', result);
             } else {
                 console.log("could not get data from database!");
             }
         }
         xhr.send();
     }
+
+
+    //
+
 </script>
 
 </html>

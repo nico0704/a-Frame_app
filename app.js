@@ -1,6 +1,6 @@
 const { response } = require("express");
 const express = require("express");
-var bodyParser = require('body-parser')
+var bodyParser = require("body-parser");
 const mysql = require("mysql");
 const { readFile } = require("fs").promises;
 
@@ -10,18 +10,17 @@ var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const app = express();
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // create connection
 // bitte hier user, password und ggf. database eintragen
 const db = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "",
-    database: "",
+    user: "root",   
+    password: "dXa_sql()->root0704",
+    database: "a-frame",
 });
-
 
 // connect
 db.connect((error) => {
@@ -50,7 +49,6 @@ app.get("/getScore", async (req, res) => {
         }
     });
 });
-
 
 app.listen("8080", () => {
     console.log("Server started on port 8080");
