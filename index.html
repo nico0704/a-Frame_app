@@ -11,26 +11,9 @@
     <a-scene background="color: black">
         <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" data-aframe-default-light=""
             aframe-injected=""></a-entity>
-        <a-entity>
+        <a-entity class="trackLimits">
             <!--Street plane-->
             <a-plane position="0 0 -2" rotation="-90 0 0" width="15" height="120" color="#343434"></a-plane>
-            <!--Left plane-->
-            <a-plane position="7.5 0.01 -2" rotation="-90 0 0" color="#6a747c" height="120" width="1"></a-plane>
-            <!--Road markings-->
-            <a-plane position="0 0.01 -55" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 -45" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 -35" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 -25" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 -15" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 -05" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 05" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 15" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 25" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 35" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 45" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <a-plane position="0 0.01 55" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
-            <!--Right plane-->
-            <a-plane position="-7.5 0.01 -2" rotation="-90 0 0" color="#6a747c" height="120" width="1"></a-plane>
         </a-entity>
         <!--Car_1-->
         <a-entity class="car" scale="2.47 0.92 0.5" position="2.85 0 -55"
@@ -124,6 +107,7 @@
 
     window.addEventListener("load", getScore);
     window.addEventListener("load", setCars);
+    window.addEventListener("load", drawTrackLimits);
 
     function getScore() {
         console.log("getting data from database...");
@@ -170,28 +154,39 @@
         }, 250);
     }
 
-    function setCars_12() {
-        for (let i = 0; i < cars12.length; i++) {
-            cars12[i].setAttribute("animation", {
-                property: "object3D.position.z",
-                to: "60",
-                dur: "5200",
-                easing: "linear",
-                loop: true,
-            })
+    function drawTrackLimits() {
+        let trackLimits = document.querySelector(".trackLimits");
+        for (let i = 0; i < 60; i++) {
+            let right_track_limit = document.createElement("a-plane");
+            let left_track_limit = document.createElement("a-plane");
+            left_track_limit.setAttribute("position", { x: 7.5, y: 0.01, z: (-60 + 2 * i) });
+            left_track_limit.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+            left_track_limit.setAttribute("material", { color: "#d61313" });
+            right_track_limit.setAttribute("position", { x: -7.5, y: 0.01, z: (-60 + 2 * i) });
+            right_track_limit.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+            right_track_limit.setAttribute("material", { color: "#d61313" });
+            trackLimits.appendChild(left_track_limit);
+            trackLimits.appendChild(right_track_limit);
         }
-    }
-
-    function setCars_34() {
-        for (let i = 0; i < cars34.length; i++) {
-            cars34[i].setAttribute("animation", {
-                property: "object3D.position.z",
-                to: "120",
-                delay: 0,
-                dur: "5200",
-                easing: "linear",
-                loop: true,
-            })
+        for (let i = 0; i < 60; i++) {
+            let right_track_limit = document.createElement("a-plane");
+            let left_track_limit = document.createElement("a-plane");
+            left_track_limit.setAttribute("position", { x: 7.5, y: 0.01, z: (-61 + 2 * i) });
+            left_track_limit.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+            left_track_limit.setAttribute("material", { color: "#b3afaf" });
+            right_track_limit.setAttribute("position", { x: -7.5, y: 0.01, z: (-61 + 2 * i) });
+            right_track_limit.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+            right_track_limit.setAttribute("material", { color: "#b3afaf" });
+            trackLimits.appendChild(left_track_limit);
+            trackLimits.appendChild(right_track_limit);
+        }
+        for (let i = 0; i < 12; i++) {
+            let road_marking = document.createElement("a-plane");
+            road_marking.setAttribute("position", { x: 0, y: 0.01, z: (-55 + 10 * i) });
+            road_marking.setAttribute("rotation", { x: -90, y: 0, z: 0 });
+            road_marking.setAttribute("material", { color: "#6a747c" });
+            road_marking.setAttribute("geometry", {height: "5", width: "1"});
+            trackLimits.appendChild(road_marking);
         }
     }
 
