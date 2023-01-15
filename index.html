@@ -9,15 +9,32 @@
 
 <body>
     <a-scene background="color: black">
-        <a-entity light="intensity: 0.7; castShadow: true" position="-0.5 1 1" data-aframe-default-light=""
+        <a-entity light="intensity: 0.6; castShadow: true" position="-0.5 1 1" data-aframe-default-light=""
             aframe-injected=""></a-entity>
-        <a-plane position="0 0 -2" rotation="-90 0 0" width="15" height="120" color="#6a747c"></a-plane>
-        <!--<a-box animation="property: object3D.position.z; to: 120; delay: 200; dur: 5200; easing: linear; loop: true"
-            position="0 2 -80" color="orange" opacity="1" width="2" depth="5" height="3" material=""
-            geometry=""></a-box>-->
-
-        <!--Car to 70-->
-        <a-entity scale="1.43 1 0.75" animation="property: object3D.position.z; to:0; delay: 200; dur: 5200; easing: linear; loop: true">
+        <a-entity>
+            <!--Street plane-->
+            <a-plane position="0 0 -2" rotation="-90 0 0" width="15" height="120" color="#343434"></a-plane>
+            <!--Left plane-->
+            <a-plane position="7.5 0.01 -2" rotation="-90 0 0" color="#6a747c" height="120" width="1"></a-plane>
+            <!--Road markings-->
+            <a-plane position="0 0.01 -55" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 -45" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 -35" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 -25" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 -15" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 -05" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 05" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 15" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 25" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 35" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 45" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <a-plane position="0 0.01 55" rotation="-90 0 0" color="#6a747c" height="5" width="1"></a-plane>
+            <!--Right plane-->
+            <a-plane position="-7.5 0.01 -2" rotation="-90 0 0" color="#6a747c" height="120" width="1"></a-plane>
+        </a-entity>
+        <!--Car_1-->
+        <a-entity class="car" scale="2.47 0.92 0.5" position="2.85 0 -55"
+            animation="property: object3D.position.z; to:80; delay: 200; dur: 5200; easing: linear; loop: true">
             <!--Body-->
             <a-cylinder position="1 1.05 -10" rotation="90 -90 0" scale="2.0 0.6 0.6" radius="2" segments-radial="10"
                 color="#253aa7"></a-cylinder>
@@ -25,21 +42,89 @@
             <a-plane position="0.997 1.65 -6.735" scale="0.6 1.13 1" rotation="-67.5 0 0" color="#6a747c" height="1"
                 width="1" metalness="0.7"></a-plane>
             <!--Tires-->
-            <a-sphere position="0.7 0.25 -6.95" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
-            <a-sphere position="1.313 0.25 -6.95" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
-            <a-sphere position="0.7 0.25 -13.2" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
-            <a-sphere position="1.313 0.25 -13.2" scale="0.3 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="0.7 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="0.7 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
             <!--Lights-->
-            <a-sphere position="0.794 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49" radius="0.11"></a-sphere>
-            <a-sphere position="1.2 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49" radius="0.11"></a-sphere>
+            <a-sphere position="0.794 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+            <a-sphere position="1.2 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
         </a-entity>
+        <!--Car_2-->
+        <a-entity class="car" scale="2.47 0.92 0.5" position="-4.68 0 -55"
+            animation="property: object3D.position.z; to:80; delay: 200; dur: 5200; easing: linear; loop: true">
+            <!--Body-->
+            <a-cylinder position="1 1.05 -10" rotation="90 -90 0" scale="2.0 0.6 0.6" radius="2" segments-radial="10"
+                color="#752b19"></a-cylinder>
+            <!--Windshield-->
+            <a-plane position="0.997 1.65 -6.735" scale="0.6 1.13 1" rotation="-67.5 0 0" color="#6a747c" height="1"
+                width="1" metalness="0.7"></a-plane>
+            <!--Tires-->
+            <a-sphere position="0.7 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="0.7 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <!--Lights-->
+            <a-sphere position="0.794 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+            <a-sphere position="1.2 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+        </a-entity>
+        <!--Car_3-->
+        <a-entity class="car" scale="2.47 0.92 0.5" position="-0.28 0 -55"
+            animation="property: object3D.position.z; to:80; delay: 2600; dur: 5200; easing: linear; loop: true">
+            <!--Body-->
+            <a-cylinder position="1 1.05 -10" rotation="90 -90 0" scale="2.0 0.6 0.6" radius="2" segments-radial="10"
+                color="#df5891"></a-cylinder>
+            <!--Windshield-->
+            <a-plane position="0.997 1.65 -6.735" scale="0.6 1.13 1" rotation="-67.5 0 0" color="#6a747c" height="1"
+                width="1" metalness="0.7"></a-plane>
+            <!--Tires-->
+            <a-sphere position="0.7 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="0.7 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <!--Lights-->
+            <a-sphere position="0.794 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+            <a-sphere position="1.2 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+        </a-entity>
+        <!--Car_4-->
+        <a-entity class="car" scale="2.47 0.92 0.5" position="-7.96 0 -55"
+            animation="property: object3D.position.z; to:80; delay: 2600; dur: 5200; easing: linear; loop: true">
+            <!--Body-->
+            <a-cylinder position="1 1.05 -10" rotation="90 -90 0" scale="2.0 0.6 0.6" radius="2" segments-radial="10"
+                color="#221b19"></a-cylinder>
+            <!--Windshield-->
+            <a-plane position="0.997 1.65 -6.735" scale="0.6 1.13 1" rotation="-67.5 0 0" color="#6a747c" height="1"
+                width="1" metalness="0.7"></a-plane>
+            <!--Tires-->
+            <a-sphere position="0.7 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -6.95" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="0.7 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <a-sphere position="1.313 0.25 -13.2" scale="0.25 1 1" color="#101116" radius="0.3"></a-sphere>
+            <!--Lights-->
+            <a-sphere position="0.794 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+            <a-sphere position="1.2 0.949 -6.255" scale="0.69 1 1" color="#c47327" emissive="#655c49"
+                radius="0.11"></a-sphere>
+        </a-entity>
+        <a-plane position="0 0 -58" rotation="0 0 0" width="16" height="20" color="black" metalness="1"></a-plane>
         <a-text id="test"
-            animation="property: object3D.position.z; to: 120; delay: 200; dur: 52000; easing: linear; loop: true"
-            value="" position="20 16 -80" color="pink" , scale="10 10 10"></a-text>
+            animation="property: object3D.position.z; to: -80; delay: 200; dur: 52000; easing: linear; loop: true"
+            value="" position="20 20 -80" color="pink" , scale="10 10 10"></a-text>
     </a-scene>
 </body>
 <script>
+    var sceneEl = document.querySelector('a-scene');
+    let cars = document.querySelectorAll(".car");
+
     window.addEventListener("load", getScore);
+    window.addEventListener("load", setCars);
+
     function getScore() {
         console.log("getting data from database...");
         let xhr = new XMLHttpRequest();
@@ -62,8 +147,58 @@
         xhr.send();
     }
 
+    function setCars() {
+        const colors = ["#253aa7", "#752b19", "#df5891", "#221b19", "#d6e7f1", "#cf1f21", "#333a3c"];
+        for (let i = 0; i < cars.length; i++) {
+            if (cars[i].getAttribute("position").z > 70) {
+                //console.log(cars[i].getAttribute("position"))
+                let car = cars[i];
+                let x = car.getAttribute("position").x;
+                car.setAttribute("position", { x: x, y: 0, z: -55 });
+                car.setAttribute("animation", {
+                    property: "object3D.position.z",
+                    to: "80",
+                    dur: randomIntFromInterval(3000, 5600),
+                    easing: "linear",
+                    loop: true,
+                });
+                car.childNodes[3].setAttribute("material", { color: colors[randomIntFromInterval(0, 6)] });
+            }
+        }
+        setTimeout(() => {
+            requestAnimationFrame(setCars);
+        }, 250);
+    }
 
-    //
+    function setCars_12() {
+        for (let i = 0; i < cars12.length; i++) {
+            cars12[i].setAttribute("animation", {
+                property: "object3D.position.z",
+                to: "60",
+                dur: "5200",
+                easing: "linear",
+                loop: true,
+            })
+        }
+    }
+
+    function setCars_34() {
+        for (let i = 0; i < cars34.length; i++) {
+            cars34[i].setAttribute("animation", {
+                property: "object3D.position.z",
+                to: "120",
+                delay: 0,
+                dur: "5200",
+                easing: "linear",
+                loop: true,
+            })
+        }
+    }
+
+    function randomIntFromInterval(min, max) {
+        // min and max included
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
 </script>
 
