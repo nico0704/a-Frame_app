@@ -12,7 +12,7 @@ let db_ready = false;
 // bitte hier user & password eintragen
 const host = "localhost";
 const user = "root";
-const password = "dXa_sql()->root0704";
+const password = "";
 const database = "aframe";
 if (password == "") {
     console.log(
