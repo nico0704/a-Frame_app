@@ -15,12 +15,21 @@ app.use(bodyParser.json());
 
 // create connection
 // bitte hier user, password und ggf. database eintragen
+const host = "localhost";
+const user = "root";
+const password = "";
+const database = "aframe";
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",   
-    password: "dXa_sql()->root0704",
-    database: "a-frame",
+    host: host,
+    user: user,
+    password: password,
+    database: database,
 });
+
+if (password == "") {
+    console.log("please set password for database connection in app.js line 20...");
+    return;
+}
 
 // connect
 db.connect((error) => {

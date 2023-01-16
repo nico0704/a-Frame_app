@@ -1,3 +1,5 @@
+CREATE SCHEMA IF NOT EXISTS aframe
+
 CREATE TABLE score (
 	ID int AUTO_INCREMENT,
     firstname varchar(255),

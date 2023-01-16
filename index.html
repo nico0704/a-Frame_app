@@ -99,7 +99,7 @@
         <!--Scoreboard-->
         <a-entity>
             <!--<a-plane position="0 20 -40.1" rotation="25 0 0" color="#6a747c" width="30" height="13"></a-plane>-->
-            <a-text id="scoreboard" value="" position="25 20 -50" rotation="30 -40 0" scale="1.2 1.2 1.2" color="white"
+            <a-text id="scoreboard" value="" position="25 20 -50" rotation="30 -25 0" scale="1.2 1.2 1.2" color="white"
                 font="mozillavr" width="22.5" height="25"></a-text>
         </a-entity>
         <!--Title-->
@@ -113,10 +113,12 @@
     var sceneEl = document.querySelector('a-scene');
     let cars = document.querySelectorAll(".car");
 
-    window.addEventListener("load", getScore);
-    window.addEventListener("load", setCars);
-    window.addEventListener("load", drawTrackLimits);
-
+    if (window.location.href == 'http://localhost:8080/') {
+        console.log(window.location.href);
+        window.addEventListener("load", getScore);
+        window.addEventListener("load", setCars);
+        window.addEventListener("load", drawTrackLimits);
+    }
     function getScore() {
         console.log("getting data from database...");
         let xhr = new XMLHttpRequest();
@@ -164,6 +166,7 @@
                     loop: true,
                 });
                 car.childNodes[3].setAttribute("material", { color: colors[randomIntFromInterval(0, 7)] });
+
             }
         }
         setTimeout(() => {
