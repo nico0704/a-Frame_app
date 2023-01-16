@@ -8,10 +8,13 @@
 
 <body>
     <h1>Multimediasysteme 3 - Setup</h1>
-    <h3>1. User & Password für MySql in app.js eintragen (Line 17 - 22)</h3>
-    <h3>2. Schema erstellen (Line 1 von sql_saver.sql ausführen)</h3>
-    <h3>3. Restliches sql script für vorher erstelltes "aframe"-Schema ausführen (Line 3 - 16 von sql_saver.sql)  um Table zu erstellen und mit Einträgen zu füllen</h3>
-    <h3>4. ggf. Module installieren (npm install --save body-parser express mysql xhr-request) & node app.js starten</h3>
+    <h3>1. Password & ggf. User (default root) für MySql in app.js eintragen (Line 13 - 15)</h3>
+    <h3>-> Wenn aframe Database automatisch aufgesetzt werden soll, einfach "node app.js" starten und localhost:8080 aufrufen.</h3>
+    <h3>-> Wenn aframe Database schon vorhanden ist:
+    <h3>1. In app.js line 9 "db_ready" auf true setzen.</h3>
+    <h3>2. In app.js line 16 Namen der DB eintragen, wenn diese nicht "aframe" heißt.</h3>
+    <h3>3. In app.js line 27 auskommentieren.</h3>
+    <h3>4. node app.js starten und localhost:8080 aufrufen.</h3>
 </body>
 
 </html>

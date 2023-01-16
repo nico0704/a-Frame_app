@@ -99,7 +99,7 @@
         <!--Scoreboard-->
         <a-entity>
             <!--<a-plane position="0 20 -40.1" rotation="25 0 0" color="#6a747c" width="30" height="13"></a-plane>-->
-            <a-text id="scoreboard" value="" position="25 20 -50" rotation="30 -25 0" scale="1.2 1.2 1.2" color="white"
+            <a-text id="scoreboard" value="<%= scoreboard %>" position="25 20 -50" rotation="30 -25 0" scale="1.2 1.2 1.2" color="white"
                 font="mozillavr" width="22.5" height="25"></a-text>
         </a-entity>
         <!--Title-->
@@ -112,42 +112,13 @@
 <script>
     var sceneEl = document.querySelector('a-scene');
     let cars = document.querySelectorAll(".car");
-
-    if (window.location.href == 'http://localhost:8080/') {
-        console.log(window.location.href);
-        window.addEventListener("load", getScore);
-        window.addEventListener("load", setCars);
-        window.addEventListener("load", drawTrackLimits);
-    }
-    function getScore() {
-        console.log("getting data from database...");
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", "/getScore", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onload = function () {
-            if (this.status == 200) {
-                let response = JSON.parse(xhr.response);
-                //console.log(response);
-                let score_arr = [];
-                let result = "";
-                response.forEach(element => {
-                    score_arr.push(element);
-                });
-                // sort array by score (descending)...
-                score_arr.sort((a, b) => b.score - a.score);
-                console.log(score_arr);
-                let pos = 1;
-                score_arr.forEach(element => {
-                    result += pos + ". " + element.firstname + " " + element.lastname + " - " + element.gamertag + " : " + element.score + "\n";
-                    pos++;
-                })
-                document.getElementById("scoreboard").setAttribute("value", result);
-                document.getElementById("scoreboard").setAttribute("text", { lineHeight: "150", letterSpacing: "7.5" });
-            } else {
-                console.log("could not get data from database!");
-            }
-        }
-        xhr.send();
+    
+    drawTrackLimits();
+    setCars();
+    changeScoreboardProps();
+    
+    function changeScoreboardProps() {
+        document.getElementById("scoreboard").setAttribute("text", { lineHeight: "150", letterSpacing: "7.5" });
     }
 
     function setCars() {

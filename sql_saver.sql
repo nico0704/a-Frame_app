@@ -1,4 +1,8 @@
-CREATE SCHEMA IF NOT EXISTS aframe
+DROP DATABASE aframe;
+
+drop table if exists score;
+
+CREATE SCHEMA IF NOT EXISTS aframe;
 
 CREATE TABLE score (
 	ID int AUTO_INCREMENT,
